@@ -1,3 +1,22 @@
+// Space Optimization
+
+#include <bits/stdc++.h> 
+
+int maximumNonAdjacentSum(vector<int> &nums){
+    int n = nums.size();
+    int cur=nums[1], prev1=nums[0], prev2=0;
+
+    for(int i=1; i<n; i++){
+        int pick = nums[i];
+        if(i > 1) pick += prev2;
+        int notpick = prev1;
+        cur = max(pick, notpick);
+        prev2 = prev1;
+        prev1 = cur;
+    }
+    return prev1;
+}
+
 // TABULATION
 
 #include <bits/stdc++.h> 
